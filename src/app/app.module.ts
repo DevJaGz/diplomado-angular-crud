@@ -6,22 +6,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideDatabase, getDatabase } from '@angular/fire/database';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { provideFunctions, getFunctions } from '@angular/fire/functions';
-import { provideMessaging, getMessaging } from '@angular/fire/messaging';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 //Components
 import { AppComponent } from './app.component';
 
+//Environments
+import { environment } from '../environments/environment';
 
 //-------------------
 //--- Third Party --- 
 //-------------------
-
 
 
 
@@ -31,8 +27,9 @@ import { AppComponent } from './app.component';
 
 //Modules
 import { SharedModule } from './components/views/shared/shared.module';
-import { EmployeesService } from './services/employees.service';
 
+//Services
+import { EmployeesService } from './services/employees.service';
 
 
 
@@ -46,12 +43,8 @@ import { EmployeesService } from './services/employees.service';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
-    provideMessaging(() => getMessaging())
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [
     EmployeesService

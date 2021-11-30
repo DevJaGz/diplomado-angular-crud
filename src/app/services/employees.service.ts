@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import { initializeApp } from 'firebase/app'
-import { environment } from '../../environments/environment';
-
+import { AngularFirestore, CollectionReference, DocumentReference } from '@angular/fire/compat/firestore';
+import { IEmployee } from '../interfaces/employee.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
 
-  constructor() {
+  constructor(private _firestore: AngularFirestore) {
 
-    const app = initializeApp(environment.firebaseConfig)
+  }
+
+
+  addEmployee(employee: IEmployee): Promise<any> {
+    console.log("Adding new employee");
+    return this._firestore.collection('employees').add(employee)
   }
 }
