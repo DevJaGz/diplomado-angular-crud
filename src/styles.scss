@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bootswatch/dist/darkly/variables";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootswatch/dist/darkly/variables";
+
+
+
+
+
+@font-face {
+  font-family: Poppins;
+  src: url('./assets/fonts/Poppins/Poppins-Regular.ttf');
+}
+
+body {
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
