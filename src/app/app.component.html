@@ -1,15 +1,17 @@
-<app-navbar></app-navbar>
-<div class="container mt-5">
-  <h1>CRUD</h1>
-  <P>Julian Andres Gomez</P>
-  <hr>
-
-  <div class="container">
-    <div class=" row">
-      <div class="col">
-        <router-outlet></router-outlet>
+<div
+     style="min-height: 100vh"
+     *blockUI="'block-target'; message: 'Cargando...'">
+  <app-navbar></app-navbar>
+  <div class="container mt-5">
+    <h1>CRUD</h1>
+    <P>Julian Andres Gomez</P>
+    <hr>
+    <div class="container">
+      <div class=" row">
+        <div class="col">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
   </div>
-
 </div>

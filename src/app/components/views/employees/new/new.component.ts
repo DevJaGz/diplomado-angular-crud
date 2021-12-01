@@ -52,7 +52,7 @@ export class NewComponent implements OnInit {
     }
     const { value } = this.employeeForm;
 
-    this._blockUIService.start('block-target')
+    this._blockUIService.start('block-target', "Agregando empleado")
     this._employeeService.addEmployee(value)
       .then((res) => {
         console.log("Empleado agregado", res);
@@ -75,6 +75,7 @@ export class NewComponent implements OnInit {
       icon: "success",
       confirmButtonText: "OK",
       confirmButtonColor: '#375A7F',
+      background: '#f7f7f7',
     })
   }
 
@@ -85,6 +86,7 @@ export class NewComponent implements OnInit {
       icon: 'error',
       confirmButtonText: "OK",
       confirmButtonColor: '#375A7F',
+      background: '#f7f7f7'
     })
   }
 
