@@ -3,6 +3,8 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import * as moment from 'moment';
 import Swal from 'sweetalert2'
 import { EmployeesService } from 'src/app/services/employees.service';
+import { BlockUI, BlockUIService, NgBlockUI } from 'ng-block-ui';
+
 
 
 
@@ -14,10 +16,17 @@ import { EmployeesService } from 'src/app/services/employees.service';
 })
 export class NewComponent implements OnInit {
 
+  @BlockUI("block-item") blockUI: NgBlockUI = {} as NgBlockUI;
+
+
   bussy = false;
   employeeForm: FormGroup;
 
-  constructor(private _FB: FormBuilder, private _employeeService: EmployeesService) {
+  constructor(
+    private _FB: FormBuilder,
+    private _employeeService: EmployeesService,
+    private _blockUIService: BlockUIService
+  ) {
     this.employeeForm = this._FB.group({
       name: [, Validators.required],
       lastName: [, Validators.required],
@@ -44,21 +53,19 @@ export class NewComponent implements OnInit {
   }
 
 
-
-
   async addEmployee() {
-
     if (this.employeeForm.invalid) {
       this.employeeForm.markAllAsTouched()
       return
     }
+    this._blockUIService.start('test')
     this.setBusy()
     const { value } = this.employeeForm;
     let error = ""
     const res = await this._employeeService.addEmployee(value).catch(e => { error = e })
     // const res: any = await this.testReject().catch(e => { error = e })
     this.setFree()
-
+    this._blockUIService.stop('test')
     if (res) {
       this.successMessage("Empleado Agregado", "Empleado agregado satisfactoriamente.")
       this.employeeForm.reset()

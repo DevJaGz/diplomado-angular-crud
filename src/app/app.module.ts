@@ -20,7 +20,6 @@ import { environment } from '../environments/environment';
 //-------------------
 
 
-
 //--------------
 //--- Custom --- 
 //--------------
@@ -30,9 +29,7 @@ import { SharedModule } from './components/views/shared/shared.module';
 
 //Services
 import { EmployeesService } from './services/employees.service';
-
-
-
+import { BlockUIModule } from 'ng-block-ui';
 
 
 @NgModule({
@@ -44,7 +41,8 @@ import { EmployeesService } from './services/employees.service';
     AppRoutingModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BlockUIModule.forRoot()
   ],
   providers: [
     EmployeesService

@@ -5,7 +5,7 @@ import { NewRoutingModule } from './new-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewComponent } from './new.component';
 
-
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
   declarations: [
@@ -14,8 +14,8 @@ import { NewComponent } from './new.component';
   imports: [
     CommonModule,
     NewRoutingModule,
-    ReactiveFormsModule
-  ],
-
+    ReactiveFormsModule,
+    BlockUIModule
+  ]
 })
 export class NewModule { }

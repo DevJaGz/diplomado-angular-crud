@@ -1,4 +1,4 @@
-<div class="p-5">
+<div class="p-5" *blockUI="'test'; message: 'Agregando...'">
        <h3 class="text-center mb-4">Nuevo empleado</h3>
        <hr>
        <form class="row g-3" [formGroup]="employeeForm" (submit)="addEmployee()">
@@ -46,14 +46,11 @@
               </div>
               <hr>
               <div class="col-12 mt-4">
-
                      <button [disabled]="bussy" type="submit" class="btn btn-primary">Agregar</button>
               </div>
        </form>
 
 </div>
-
-
 
 <!-- 
 <h5>Form valid</h5>
