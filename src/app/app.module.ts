@@ -44,9 +44,11 @@ import { BlockUIModule } from 'ng-block-ui';
     AngularFirestoreModule,
     BlockUIModule.forRoot()
   ],
-  providers: [
-    EmployeesService
-  ],
+
+  // TODO: Preguntar si se deja así o no?
+  // providers: [
+  //   EmployeesService
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

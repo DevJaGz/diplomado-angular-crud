@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, DocumentChangeAction, DocumentReference } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IEmployee } from '../interfaces/employee.interface';
 
 @Injectable({
@@ -12,8 +14,19 @@ export class EmployeesService {
   }
 
 
-  addEmployee(employee: IEmployee): Promise<any> {
+  addEmployee(employee: IEmployee): Promise<DocumentReference<IEmployee>> {
     console.log("Adding new employee");
-    return this._firestore.collection('employees').add(employee)
+    return this._firestore.collection<IEmployee>('employees').add(employee)
   }
+
+  // getEmployees(): Observable<IEmployee[]> {
+  //   return this._firestore.collection<IEmployee>('employees').valueChanges()
+  // }
+
+  getEmployees$(): Observable<DocumentChangeAction<IEmployee>[]> {
+    return this._firestore.collection<IEmployee>('employees').snapshotChanges()
+  }
+
+
+
 }
