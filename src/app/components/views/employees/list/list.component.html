@@ -4,13 +4,33 @@
     <div class="col-12 col-md-4 p-1">
       <div class="card">
         <div class="card-body text-center">
-          <div class="m-1">
+          <div class="m-1 ">
             <h5 class="card-title">{{employee.name}} <span class="text-primary"> {{employee.lastName}} </span></h5>
             <h6 class="card-subtitle mb-2 text-muted">{{employee.startDate}}</h6>
             <p class="card-text"> {{employee.email}} </p>
           </div>
-          <a routerLink="/edit/{{employee.id}}" class="btn btn-primary m-1">Editar</a>
-          <a routerLink="/details/{{employee.id}}" class="btn  btn-outline-warning  m-1">Ver más</a>
+
+          <div class="d-flex justify-content-center nw-100">
+            <div class="mt-2 d-flex justify-content-between px-4 py-2 bg-secondary rounded-pill w-75">
+              <button
+                      (click)="edit(employee)"
+                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar"
+
+                      class=" btn btn-primary  btn-circle btn-sm"><i class="fas fa-edit"></i></button>
+
+              <button
+                      (click)="view(employee)"
+                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver más"
+
+                      class=" btn btn-warning btn-circle btn-sm"><i class="fas fa-sign-in-alt"></i></button>
+
+              <button
+                      (click)="delete(employee.id)"
+                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar"
+                      class=" btn btn-danger btn-circle btn-sm"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

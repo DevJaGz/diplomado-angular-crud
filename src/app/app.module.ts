@@ -28,7 +28,6 @@ import { environment } from '../environments/environment';
 import { SharedModule } from './components/views/shared/shared.module';
 
 //Services
-import { EmployeesService } from './services/employees.service';
 import { BlockUIModule } from 'ng-block-ui';
 
 
@@ -41,14 +40,9 @@ import { BlockUIModule } from 'ng-block-ui';
     AppRoutingModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
     BlockUIModule.forRoot()
   ],
 
-  // TODO: Preguntar si se deja así o no?
-  // providers: [
-  //   EmployeesService
-  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
