@@ -25,9 +25,14 @@ export class EditComponent implements OnInit {
     //_router solo puede usarse en el constructor para obtener los extras, si quieren obtener luego
     // se debe utilizar 'history.state', sin embargo es agrega un parámetro más: 'navigationId' 
     // console.log(this._router.getCurrentNavigation()?.extras.state)
-    this.employee = this._router.getCurrentNavigation()?.extras.state
-    this.id = this.employee.id
-    delete this.employee?.id
+    try {
+      this.employee = this._router.getCurrentNavigation()?.extras.state
+      this.id = this.employee.id
+      delete this.employee?.id
+    } catch (error) {
+      this._router.navigate(['list'])
+    }
+
   }
 
   ngOnInit(): void {

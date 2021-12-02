@@ -1,1 +1,53 @@
-<p>details works!</p>
+<div class="row ">
+  <div class="col-12 col-md-5  p-4 m-2">
+    <h5 class="text-success">Datos Online</h5>
+    <!-- Nombre -->
+    <div class="row ">
+      <div class="col-12 col-md-3 text-primary"><b>Nombre</b></div>
+      <div class="col-12 col-md-9">{{employeeOnline.name}}</div>
+    </div>
+    <!-- Apellido -->
+    <div class="row ">
+      <div class="col-12 col-md-3 text-primary"><b>Apellido</b></div>
+      <div class="col-12 col-md-9">{{employeeOnline.lastName}}</div>
+    </div>
+    <!-- Email -->
+    <div class="row ">
+      <div class="col-12 col-md-3 text-primary"><b>Email</b></div>
+      <div class="col-12 col-md-9">{{employeeOnline.email}}</div>
+    </div>
+    <!-- Ingreso -->
+    <div class="row ">
+      <div class="col-12 col-md-3 text-primary"><b>Ingreso</b></div>
+      <div class="col-12 col-md-9">{{employeeOnline.startDate}}</div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-5  p-4 m-2">
+    <h5 class="text-danger">Datos Offline</h5>
+    <!-- Nombre -->
+    <div class="row">
+      <div class="col-12 col-md-3 text-primary"><b>Nombre</b></div>
+      <div class="col-12 col-md-9">{{employeeOffline.name}}</div>
+    </div>
+    <!-- Apellido -->
+    <div class="row ">
+      <div class="col-12 col-md-3 text-primary"><b>Apellido</b></div>
+      <div class="col-12 col-md-9">{{employeeOffline.lastName}}</div>
+    </div>
+    <!-- Email -->
+    <div class="row ">
+      <div class="col-12 col-md-3 text-primary"><b>Email</b></div>
+      <div class="col-12 col-md-9">{{employeeOffline.email}}</div>
+    </div>
+    <!-- Ingreso -->
+    <div class="row ">
+      <div class="col-12 col-md-3 text-primary"><b>Ingreso</b></div>
+      <div class="col-12 col-md-9">{{employeeOffline.startDate}}</div>
+    </div>
+  </div>
+
+  <div class="col-12  pt-4 ">
+    <button class="btn btn-info" [routerLink]="['list']">Regresar</button>
+  </div>
+</div>

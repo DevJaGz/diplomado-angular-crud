@@ -5,6 +5,7 @@ import { EmployeesService } from 'src/app/services/employees.service';
 import { IEmployee } from '../../../../interfaces/employee.interface';
 import { BlockUI, BlockUIService, NgBlockUI } from 'ng-block-ui';
 import { NavigationExtras, Router } from '@angular/router';
+import { MessagesService } from 'src/app/services/messages.service';
 
 
 
@@ -24,6 +25,7 @@ export class ListComponent implements OnInit, OnDestroy {
   navigationExtras: NavigationExtras = {} as NavigationExtras;
 
   constructor(
+    private _msg: MessagesService,
     private _router: Router,
     private _blockUIService: BlockUIService,
     private _employeeService: EmployeesService) { }
@@ -59,8 +61,17 @@ export class ListComponent implements OnInit, OnDestroy {
     this._router.navigate(['details'], this.navigationExtras)
   }
 
-  delete(id: string | undefined) {
-
+  delete(employee: IEmployee) {
+    this._blockUIService.start('block-target', "Eliminando empleado...")
+    this._employeeService.deleteEmployee(employee.id)
+      .then(() => {
+        this._blockUIService.stop('block-target')
+        this._msg.successMessage("Empleado eliminado", `Se elimino a <b>${employee.name} ${employee.lastName}</b>, satisfactoriamente.`)
+      })
+      .catch((error) => {
+        this._blockUIService.stop('block-target')
+        this._msg.errorMessage("Error", `No fue posible eliminar a <b>${employee.name} ${employee.lastName}</b>.`, error)
+      })
   }
 
 

@@ -5,13 +5,15 @@ import { EmployeesFormComponent } from './utils/employees-form/employees-form.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../../../app-routing.module';
 import { RouterModule } from '@angular/router';
+import { LimitStringPipe } from './pipes/limit-string.pipe';
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    EmployeesFormComponent
+    EmployeesFormComponent,
+    LimitStringPipe
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     NavbarComponent,
-    EmployeesFormComponent
+    EmployeesFormComponent,
+    LimitStringPipe
   ]
 })
 export class SharedModule { }

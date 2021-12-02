@@ -26,17 +26,18 @@ export class EmployeesService {
     return this._firestore.collection<IEmployee>('employees').doc(id).update(employee)
   }
 
-  deleteEmployee(id: string): Promise<void> {
+  deleteEmployee(id: string | undefined): Promise<void> {
     return this._firestore.collection<IEmployee>('employees').doc(id).delete()
   }
 
-  getEmployee(id: string): any {
-    return this._firestore.collection<IEmployee>('employees').doc(id).get()
+  getEmployee$(id: string) {
+    return this._firestore.collection<IEmployee>('employees').doc(id).snapshotChanges()
       .pipe(
         map(action => {
-
-          console.log(action);
-
+          return {
+            id: action.payload.id,
+            ...action.payload.data() as IEmployee
+          }
         })
       )
   }
@@ -44,10 +45,10 @@ export class EmployeesService {
   getEmployees$(): Observable<IEmployee[]> {
     return this._firestore.collection<IEmployee>('employees').snapshotChanges()
       .pipe(
-        map(actions => actions.map(el => {
+        map(actions => actions.map(action => {
           return {
-            id: el.payload.doc.id,
-            ...el.payload.doc.data() as IEmployee
+            id: action.payload.doc.id,
+            ...action.payload.doc.data() as IEmployee
           }
         }))
       )
